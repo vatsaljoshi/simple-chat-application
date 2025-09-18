@@ -1,134 +1,79 @@
-Real-Time Chat Application
+# Real-Time Chat Application
 
-A minimal real-time chat app built with Spring Boot, WebSockets (STOMP over SockJS), and plain JavaScript (Vanilla JS). Includes a fun "CEO Roast Chat" demo featuring Sam Altman, Mark Zuckerberg, Larry Ellison, and Bill Gates.
+A minimal **real-time chat app** built with **Spring Boot**, **WebSockets (STOMP over SockJS)**, and **Vanilla JavaScript**. Includes a fun _"CEO Roast Chat"_ demo featuring Sam Altman, Mark Zuckerberg, Larry Ellison, and Bill Gates.
 
-🧩 Features
+---
+## 🧩 Features
 
-Real-time messaging using WebSockets and STOMP
+- Real-time messaging using **WebSockets + STOMP**
+- **SockJS** fallback for older browsers
+- In-memory broadcasting via **Spring Boot message broker**
+- Lightweight frontend with **Vanilla JS** (no frameworks)
+- Automatic scrolling and **CORS configuration**
+- Fun demo script: fake chat between tech CEOs
 
-SockJS fallback for older browsers
+---
+## 📋 Tech Stack
 
-Simple broadcasting via Spring Boot's in-memory message broker
+- **Backend**: Java 17+, Spring Boot, Spring WebSocket
+- **Frontend**: HTML5, CSS (Bootstrap), Vanilla JavaScript, SockJS, STOMP.js
+- **Build Tool**: Maven / Gradle
 
-Vanilla JS frontend — no frameworks required
+---
+## ⚙️ Prerequisites
 
-Automatic scrolling and CORS configuration
+- Java 17+
+- Maven 3.6+ / Gradle 7+
+- Git
 
-Fun demo script: fake chat between tech CEOs
+---
+## 🚀 Getting Started
 
-📋 Tech Stack
+### Option 1: Run with Spring Boot (Development)
+`git clone https://github.com/your-username/real-time-chat.git cd real-time-chat mvn clean package mvn spring-boot:run`
+Open 👉 [http://localhost:8080/chat.html](http://localhost:8080/chat.html)
 
-Backend: Java 17+, Spring Boot, Spring WebSocket
+---
+### Option 2: Deploy on Apache Tomcat (Production-like)
+`mvn clean package -Pwar cp target/real-time-chat.war $TOMCAT_HOME/webapps/ $TOMCAT_HOME/bin/startup.sh`
+Open 👉 [http://localhost:8080/real-time-chat/chat.html](http://localhost:8080/real-time-chat/chat.html)
 
-Frontend: HTML5, CSS (Bootstrap), Vanilla JavaScript, SockJS, STOMP.js
+---
+### Option 3: Run in Eclipse
+- Import → _Existing Maven Project_
+- Run the `@SpringBootApplication` main class (e.g., `RealTimeChatApplication.java`)
+- Open 👉 [http://localhost:8080/chat.html](http://localhost:8080/chat.html)
 
-Build Tool: Maven or Gradle
+---
+## 🔧 Configuration
 
-⚙️ Prerequisites
+- **WebSocket Endpoint**: `/chat`
+- **Send Prefix**: `/app` (mapped to `@MessageMapping`)
+- **Broadcast Topic Prefix**: `/topic`
+- **CORS**: Allowed origin patterns = `*` (for dev)
 
-Java Development Kit (JDK) 17 or newer
+To modify, edit `WebSocketConfig.java` in `src/main/java/com/chat/app/config/`.
 
-Maven 3.6+ (or Gradle 7+)
+---
+## 🎬 Usage
 
-Git
+1. Enter your name in the input field.
+2. Type a message and click **Send**.
+3. Messages appear in real-time for all connected users.
+4. Refresh to check out the fun _"CEO Roast Chat"_ demo.
 
-🚀 Installation & Setup
+---
+## 📸 Screenshots
 
-There are two ways to run this application:
+  ~ for images, refer my linkedin post here: https://tinyurl.com/23fm8uup
 
-1. Embedded Spring Boot (for development)
+---
+## 🤝 Contributing
 
-Clone the repository
+1. Fork this repo
+2. Create a branch → `git checkout -b feature/YourFeature`
+3. Commit changes → `git commit -m "Add YourFeature"`
+4. Push branch → `git push origin feature/YourFeature`
+5. Open a Pull Request
 
-git clone https://github.com/your-username/real-time-chat.git
-cd real-time-chat
-
-Build the project
-
-mvn clean package
-
-Run with Spring Boot
-
-mvn spring-boot:run
-
-Open the chat UI
-Navigate to: http://localhost:8080/chat.html
-
-2. Deploy to Apache Tomcat (for production-like environment)
-
-Build a WAR file
-
-mvn clean package -Pwar
-
-This generates target/real-time-chat.war.
-
-Copy the WAR to Tomcat
-
-cp target/real-time-chat.war $TOMCAT_HOME/webapps/
-
-Start Tomcat (if not already running)
-
-$TOMCAT_HOME/bin/startup.sh
-
-Access the chat UI via Tomcat
-Navigate to: http://localhost:8080/real-time-chat/chat.html
-
-3. Run in Eclipse IDE
-
-Import the project
-
-Open Eclipse and go to File → Import → Existing Maven Projects.
-
-Select the project root folder and click Finish.
-
-Run the application
-
-Locate the main class with @SpringBootApplication (e.g., RealTimeChatApplication.java).
-
-Right-click the file → Run As → Java Application.
-
-Open the chat UI
-
-Once the console shows Started RealTimeChatApplication, open:
-http://localhost:8080/chat.html in your browser.
-
-🔧 Configuration
-
-WebSocket Endpoint: /chat
-
-Message Send Prefix: /app (mapped to @MessageMapping)
-
-Broadcast Topic Prefix: /topic
-
-CORS: Allowed origin patterns set to * for development
-
-To change settings, edit WebSocketConfig.java in src/main/java/com/chat/app/config/.
-
-🎬 Usage
-
-Enter your name in the name field.
-
-Type a message and click Send.
-
-Watch messages appear in real-time for all connected users.
-
-Check out the "CEO Roast Chat" demo by refreshing the page.
-
-📸 Screenshots
-
-(Place your demo screenshots here in docs/ folder and reference below.)
-
-
-
-🤝 Contributing
-
-Fork the repository.
-
-Create a feature branch: git checkout -b feature/YourFeature.
-
-Commit your changes: git commit -m "Add YourFeature".
-
-Push to your branch: git push origin feature/YourFeature.
-
-Open a Pull Request.
-
+---
